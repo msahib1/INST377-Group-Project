@@ -1,0 +1,65 @@
+<head>
+    <title>
+        Pokemon Completion Tracker
+    </title>
+    <link rel = "stylesheet" type = "text/css" href = "helpPokemon.css">
+</head>
+<body>
+    <header>
+        <h1>
+            Pokemon Completion Tracker
+        </h1>
+        <nav>
+            <ul>
+                <li>
+                    <a href = "homePokemon.html">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href = "aboutPokemon.html">
+                        About
+                    </a>
+                </li>
+                <li>
+                    <a href = "helpPokemon.html">
+                        Contact
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section id="contact">
+        <h2>
+            Contact Us
+        </h2>
+        <form action = "#" method = "post">
+            <label for = "name">
+                Name:
+            </label>
+            <input type = "text" id = "name" name = "name" required>
+            <label for = "email">
+                Email:
+            </label>
+            <input type = "email" id = "email" name = "email" required>
+
+            <label for = "question">
+                Question:
+            </label>
+            <textarea id = "question" name = "question" rows = "4" required></textarea>
+
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+    <section id = "search">
+        <form id = "searchForm">
+            <label for = "pokemonName">
+                Search for a Pokemon:
+            </label>
+            <input type = "text" id = "pokemonName" name = "pokemonName" required>
+            <input type = "submit" value = "Search">
+        </form>
+        <div id = "pokemonImage"></div>
+    </section>
+    <script src = "helpPokemon.js"></script>
+</body>
