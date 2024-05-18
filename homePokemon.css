@@ -1,6 +1,8 @@
-body{
+body {
     background-color: bisque;
+    font-family: Arial, sans-serif;
 }
+
 #nav {
     background-color: lightskyblue;
     text-align: center;
@@ -15,46 +17,77 @@ body{
 }
 
 #nav li:hover {
-    color:darkorchid;
-    background-color:aqua;
+    color: darkorchid;
+    background-color: aqua;
 }
 
 li a {
     color: whitesmoke;
-    text-decoration-line: none;
+    text-decoration: none;
 }
 
-.box {
-    position: fixed;
-    left: 25%;
-    top: auto;
+.controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.controls input, .controls select {
+    margin: 0 10px;
+    padding: 5px;
+}
+
+#pokemon-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pokemon-card {
     background-color: lightskyblue;
-    width: 50%;
-    padding: 15px;
-    padding-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    width: 150px;
+    position: relative;
 }
 
-.box button {
-    position: relative;
+.pokemon-card img {
+    width: 100px;
+    height: 100px;
+}
+
+.pokemon-card h3 {
+    margin: 10px 0;
+}
+
+.pokemon-card button {
     background-color: burlywood;
+    border: none;
+    border-radius: 5px;
     color: whitesmoke;
-    left: 45%;
+    cursor: pointer;
+    padding: 5px 10px;
 }
-.box button:hover {
-    position: relative;
-    background-color: skyblue;
-    color: whitesmoke;
-}
-#pics {
-    position: fixed;
-    left: 40%;
-    top: 27%;
-    width: 400px;
-    height: 400px;
-  }
 
-#pics img {
-    position: relative;
-    height: 400px;
-    width: 400px;
-  }
+.pokemon-card button:hover {
+    background-color: skyblue;
+}
+
+.pokemon-card .checkmark {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: green;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}

@@ -1,27 +1,40 @@
 <html>
-    <head>
-        <title>Home Pokemon</title>
-        <link rel="stylesheet" href="homePokemon.css">
-        <script src = "homePokemon.js"></script>
-        
-    </head>
+<head>
+    <title>Home Pokemon</title>
+    <link rel="stylesheet" href="homePokemon.css">
+    <script defer src="homePokemon.js"></script>
+</head>
+<body>
+    <h1>Pokemon Completion Tracker</h1>
+    <nav id="nav">
+        <ul>
+            <li><a href="homePokemon.html">Home</a></li>
+            <li><a href="aboutPokemon.html">About</a></li>
+            <li><a href="helpPokemon.html">Help</a></li>
+        </ul>
+    </nav>
+    
+    <div class="controls">
+        <input type="text" id="search" placeholder="Search Pokemon...">
+        <select id="sort">
+            <option value="name">Sort by Name</option>
+            <option value="number">Sort by Number</option>
+        </select>
+        <select id="filter-generation">
+            <option value="all">All Generations</option>
+        </select>
+        <select id="filter-type">
+            <option value="all">All Types</option>
+        </select>
+        <select id="filter-complexity">
+            <option value="all">All Complexity Levels</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+    </div>
 
-    <body>
-        <h1>Pokemon Completion Tracker</h1>
+    <div id="pokemon-container"></div>
 
-        <nav id="nav">
-            <ul>
-                <li>
-                    <a href="homePokemon.html">Home</a>
-                </li>
-                <li>
-                    <a href="aboutPokemon.html">About</a>
-                </li>
-                <li>
-                    <a href="helpPokemon.html">Contact</a>
-                </li>
-            </ul>
-        </nav>
-       
-    </body>
+</body>
 </html>
