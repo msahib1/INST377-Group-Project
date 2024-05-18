@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>Pokemon Information</title>
+    <link rel="stylesheet" href="infoPokemon.css">
+    <script src="infoPokemon.js" defer></script>
+</head>
+<body>
+    <h1>Pokemon Completion Tracker</h1>
+
+    <nav id="nav">
+        <ul>
+            <li><a href="homePokemon.html">Home</a></li>
+            <li><a href="aboutPokemon.html">About</a></li>
+            <li><a href="helpPokemon.html">Contact</a></li>
+        </ul>
+    </nav>
+    <section id="register">
+        <h2>Register</h2>
+        <form id="registerForm" onsubmit="registerUser(); return false;">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <input type="submit" value="Register">
+        </form>
+    </section>
+    <section id="search">
+        <form id="searchForm" onsubmit="createPokemon(); return false;">
+            <label for="pokemonName">Search for a Pokemon:</label>
+            <input type="text" id="pokemonName" name="pokemonName" required>
+            <input type="submit" value="Search">
+        </form>
+        <div id="pokemonImage"></div>
+        <div id="pokemonInformation"></div>
+        <div id="pokemonCaughtContainer"></div>
+    </section>
+</body>
+</html>
