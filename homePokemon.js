@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sortSelect = document.getElementById('sort');
     const filterGeneration = document.getElementById('filter-generation');
     const filterType = document.getElementById('filter-type');
-    const filterComplexity = document.getElementById('filter-complexity');
+    const filterCompletion = document.getElementById('filter-completion');
 
     let pokemonList = [];
     let caughtPokemon = new Set(JSON.parse(localStorage.getItem('caughtPokemon')) || []);
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchPokemonData() {
         try {
-            const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151');  
+            const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151'); 
             const data = await response.json();
             const fetches = data.results.map(result => fetch(result.url).then(res => res.json()));
             pokemonList = await Promise.all(fetches);
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const searchTerm = searchInput.value.toLowerCase();
         const selectedGeneration = filterGeneration.value;
         const selectedType = filterType.value;
-        const selectedComplexity = filterComplexity.value;
+        const selectedCompletion = filterCompletion.value;
         const sortOption = sortSelect.value;
 
         if (searchTerm) {
@@ -109,16 +109,12 @@ document.addEventListener('DOMContentLoaded', () => {
             filteredPokemon = filteredPokemon.filter(pokemon => pokemon.types.some(type => type.type.name === selectedType));
         }
 
-        if (selectedComplexity !== 'all') {
-            filteredPokemon = filteredPokemon.filter(pokemon => {
-                if (selectedComplexity === 'easy') {
-                    return pokemon.base_experience < 100;
-                } else if (selectedComplexity === 'medium') {
-                    return pokemon.base_experience >= 100 && pokemon.base_experience < 200;
-                } else {
-                    return pokemon.base_experience >= 200;
-                }
-            });
+        if (selectedCompletion !== 'all') {
+            if (selectedCompletion === 'caught') {
+                filteredPokemon = filteredPokemon.filter(pokemon => caughtPokemon.has(pokemon.id));
+            } else if (selectedCompletion === 'uncaught') {
+                filteredPokemon = filteredPokemon.filter(pokemon => !caughtPokemon.has(pokemon.id));
+            }
         }
 
         if (sortOption === 'name') {
@@ -134,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
     sortSelect.addEventListener('change', filterAndSortPokemon);
     filterGeneration.addEventListener('change', filterAndSortPokemon);
     filterType.addEventListener('change', filterAndSortPokemon);
-    filterComplexity.addEventListener('change', filterAndSortPokemon);
+    filterCompletion.addEventListener('change', filterAndSortPokemon);
 
     fetchPokemonData();
 });
