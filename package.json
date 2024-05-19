@@ -1,24 +1,16 @@
 {
-  "name": "inst377_group_39_project",
-  "version": "1.0.0",
-  "description": "Pokemon Completion Tracker allows people to track which of the over 1000 pokemon from the mainline games have been caught. This tool also shows where uncaught pokemon can be found in order to help completionists. # Target Browsers Ths application designed to work on Google Chrome, but can also work on other desktop browsers such as Microsoft Edge and Firefox. # Developer Manual",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/msahib1/INST377_Group_39_Project.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/msahib1/INST377_Group_39_Project/issues"
-  },
-  "homepage": "https://github.com/msahib1/INST377_Group_39_Project#readme",
-  "dependencies": {
-    "@supabase/supabase-js": "^2.43.2",
-    "express": "^4.19.2"
+    "name": "inst377_group_39_project",
+    "version": "1.0.0",
+    "description": "Pokemon Completion Tracker allows people to track which of the over 1000 pokemon from the mainline games have been caught. This tool also shows where uncaught pokemon can be found in order to help completionists.",
+    "main": "index.js",
+    "scripts": {
+      "start": "node index.js",
+      "dev": "nodemon index.js"
+    },
+    "dependencies": {
+      "@supabase/supabase-js": "^2.43.2",
+      "express": "^4.19.2",
+      "nodemon": "^2.0.14"
+    }
   }
-}
+  
