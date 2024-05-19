@@ -6,7 +6,7 @@ const app = express();
 app.use(bodyParser.json());
 
 const SUPABASE_URL = 'https://bikicgbweumnlghjjkbg.supabase.co'; 
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpa2ljZ2J3ZXVtbmxnaGpqa2JnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYwNTk0MTAsImV4cCI6MjAzMTYzNTQxMH0.ihnm8NLMYs80v1OFeiGIiewGFoViGcEeHZFsGBzcOfY';
+const SUPABASE_KEY = 'YOUR_SUPABASE_KEY'; // Replace with your Supabase key
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // Endpoint to register a new account
