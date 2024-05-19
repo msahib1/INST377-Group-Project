@@ -1,15 +1,15 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "next.config.js",
-      "use": "@vercel/next"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/"
-    }
-  ]
-}
+    "version": 2,
+    "builds": [
+      {
+        "src": "index.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      { "handle": "index.js", "src": "/api/register", "method": "POST" },
+      { "handle": "index.js", "src": "/api/get-caught-status", "method": "GET" },
+      { "handle": "index.js", "src": "/api/set-caught-status", "method": "POST" }
+    ]
+  }
+  
