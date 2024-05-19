@@ -1,6 +1,7 @@
 const express = require('express');
 const { createClient } = require('@supabase/supabase-js');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 const app = express();
 app.use(bodyParser.json());
@@ -9,10 +10,10 @@ const SUPABASE_URL = 'https://bikicgbweumnlghjjkbg.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpa2ljZ2J3ZXVtbmxnaGpqa2JnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYwNTk0MTAsImV4cCI6MjAzMTYzNTQxMH0.ihnm8NLMYs80v1OFeiGIiewGFoViGcEeHZFsGBzcOfY';
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-app.get('/', (req, res) => {
-    res.send('Welcome to the Pokémon Caught Status API!');
-});
+// Serve static files from the "public" directory
+app.use(express.static(path.join(__dirname, '../public')));
 
+// Endpoint to register a new account
 app.post('/api/register', async (req, res) => {
     const { email, password } = req.body;
 
@@ -46,6 +47,7 @@ app.get('/api/get-caught-status', async (req, res) => {
     res.status(200).json(data);
 });
 
+// Endpoint to update Pokémon caught status
 app.post('/api/set-caught-status', async (req, res) => {
     const { userId, pokemonName, caught } = req.body;
 
@@ -61,6 +63,13 @@ app.post('/api/set-caught-status', async (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+
+// Export the app for local development
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    });
+}
+
+// Export the app as a serverless function for Vercel
+module.exports = app;
