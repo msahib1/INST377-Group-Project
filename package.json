@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/msahib1/INST377_Group_39_Project#readme",
   "dependencies": {
+    "@supabase/supabase-js": "^2.43.2",
     "express": "^4.19.2"
   }
 }
