@@ -9,7 +9,10 @@ const SUPABASE_URL = 'https://bikicgbweumnlghjjkbg.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpa2ljZ2J3ZXVtbmxnaGpqa2JnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYwNTk0MTAsImV4cCI6MjAzMTYzNTQxMH0.ihnm8NLMYs80v1OFeiGIiewGFoViGcEeHZFsGBzcOfY';
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-// Endpoint to register a new account
+app.get('/', (req, res) => {
+    res.send('Welcome to the Pokémon Caught Status API!');
+});
+
 app.post('/api/register', async (req, res) => {
     const { email, password } = req.body;
 
@@ -43,7 +46,6 @@ app.get('/api/get-caught-status', async (req, res) => {
     res.status(200).json(data);
 });
 
-// Endpoint to update Pokémon caught status
 app.post('/api/set-caught-status', async (req, res) => {
     const { userId, pokemonName, caught } = req.body;
 
