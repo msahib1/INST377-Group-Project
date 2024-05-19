@@ -1,12 +1,12 @@
 {
-    "version":2,
+    "version": 2,
     "builds": [
-      { "src": "*.js", "use": "@vercel/node" }
+      { "src": "api/**/*.js", "use": "@vercel/node" }, // Assuming serverless functions are in the 'api' directory
+      { "src": "pages/**/*.js", "use": "next" } // Assuming Next.js pages are in the 'pages' directory
     ],
     "routes": [
-        {
-          "src": "/(.*)",
-          "dest": "/"
-        }
+      { "src": "/api/(.*)", "dest": "/api/$1" }, // Route API requests to the serverless functions
+      { "src": "/(.*)", "dest": "/pages/$1" } // Route other requests to Next.js pages
     ]
   }
+  
