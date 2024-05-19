@@ -53,8 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
         image.src = pokemon.sprites.front_default;
         image.alt = pokemon.name;
 
-        const name = document.createElement('h3');
+        const name = document.createElement('a');
         name.textContent = pokemon.name;
+        name.href = `infoPokemon.html?pokemon=${pokemon.name}`
 
         const button = document.createElement('button');
         button.textContent = 'Catch';

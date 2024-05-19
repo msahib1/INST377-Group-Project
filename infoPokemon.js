@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const pokemonName = params.get('pokemon');
+    if (pokemonName) {
+        document.getElementById('pokemonName').value = pokemonName;
+        createPokemon();
+    }
+    checkAuthState();
 });
 
 async function createPokemon() {
@@ -17,16 +24,17 @@ async function createPokemon() {
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
         .then(response => response.json())
         .then(data => {
-            const pokemonImage = data.sprites.front_default;
+            const pokemonImage = data.sprites.front_default
+            
             const Id = data.id;
             const abilities = [];
             const types = [];
 
             data.abilities.forEach(item => {
-                abilities.push(item.ability.name.replace(/-/g, ' ')); // Replace hyphens with spaces
+                abilities.push(item.ability.name.replace(/-/g, ' '));
             });
             data.types.forEach(item => {
-                types.push(item.type.name.replace(/-/g, ' ')); // Replace hyphens with spaces
+                types.push(item.type.name.replace(/-/g, ' ')); 
             });
 
             document.getElementById("pokemonImage").innerHTML = `<img src="${pokemonImage}" alt="${pokemonName.replace(/-/g, ' ')}">`;
@@ -38,6 +46,8 @@ async function createPokemon() {
             container.append(pokemonAbilities);
             container.append(pokemonTypes);
             
+            console.log(container)
+
             loadCaughtState(pokemonName, caughtContainer);
         })
         .catch(error => {
@@ -48,7 +58,7 @@ async function createPokemon() {
     fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonName}`)
         .then(response => response.json())
         .then(data => {
-            const gen = data.generation.name.replace(/-/g, ' '); // Replace hyphens with spaces
+            const gen = data.generation.name.replace(/-/g, ' '); 
             pokemonGen.textContent = `Generation: ${gen}`;
             container.append(pokemonGen);
         })
@@ -61,7 +71,7 @@ async function createPokemon() {
         .then(data => {
             const loc = [];
             data.forEach(item => {
-                loc.push(item.location_area.name.replace(/-/g, ' ')); // Replace hyphens with spaces
+                loc.push(item.location_area.name.replace(/-/g, ' ')); 
             });
             pokemonLoc.textContent = `Locations: ${loc.join(', ')}`;
             container.append(pokemonLoc);
@@ -74,7 +84,7 @@ async function createPokemon() {
 async function loadCaughtState(pokemonName, container) {
     const userId = localStorage.getItem('userId'); // Get user ID from local storage
     if (!userId) {
-        console.error('User is not authenticated');
+        //console.error('User is not authenticated');
         return;
     }
 
@@ -173,3 +183,11 @@ async function loginUser() {
 }
 
 
+function checkAuthState() {
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+        // User is logged in
+    } else {
+        // User is not logged in
+    }
+}

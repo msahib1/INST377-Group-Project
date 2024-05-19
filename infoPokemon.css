@@ -69,10 +69,22 @@ input[type="submit"]:hover {
 p {
     display: block;
     padding: 10px;
-    margin: 10px;
-    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: lightskyblue;
 }
-.pokemonCaughtContainer{
+#pokemonCaughtContainer{
     margin: auto;
     display: block;
+}
+
+#pokemonImage img{
+    width: 500px;
+    height: 500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: lightskyblue;
 }

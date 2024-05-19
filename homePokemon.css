@@ -53,14 +53,17 @@ li a {
     text-align: center;
     width: 150px;
     position: relative;
+    display: flex;
+    flex-flow: column;
 }
 
 .pokemon-card img {
     width: 100px;
     height: 100px;
+    align-self: center;
 }
 
-.pokemon-card h3 {
+.pokemon-card a {
     margin: 10px 0;
 }
 
