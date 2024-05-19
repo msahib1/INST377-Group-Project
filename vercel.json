@@ -1,12 +1,16 @@
 {
     "version": 2,
     "builds": [
-      { "src": "api/**/*.js", "use": "@vercel/node" }, // Assuming serverless functions are in the 'api' directory
-      { "src": "pages/**/*.js", "use": "next" } // Assuming Next.js pages are in the 'pages' directory
+      { "src": "index.js", "use": "@vercel/node" }
     ],
     "routes": [
-      { "src": "/api/(.*)", "dest": "/api/$1" }, // Route API requests to the serverless functions
-      { "src": "/(.*)", "dest": "/pages/$1" } // Route other requests to Next.js pages
-    ]
+      { "src": "/api/register", "dest": "index.js" },
+      { "src": "/api/get-caught-status", "dest": "index.js" },
+      { "src": "/api/set-caught-status", "dest": "index.js" }
+    ],
+    "env": {
+      "SUPABASE_URL": "https://bikicgbweumnlghjjkbg.supabase.co",
+      "SUPABASE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+    }
   }
   
