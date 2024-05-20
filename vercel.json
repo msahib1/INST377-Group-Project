@@ -7,7 +7,15 @@
       { "src": "/api/register", "dest": "/index.js" },
       { "src": "/api/get-caught-status", "dest": "/index.js" },
       { "src": "/api/set-caught-status", "dest": "/index.js" },
-      { "src": "/(.*)", "dest": "/public/$1" }
+      { "src": "/homePokemon.css", "dest": "/index.js" },
+      { "src": "/aboutPokemon.css", "dest": "/index.js" },
+      { "src": "/helpPokemon.css", "dest": "/index.js" },
+      { "src": "/infoPokemon.css", "dest": "/index.js" },
+      { "src": "/homePokemon.js", "dest": "/index.js" },
+      { "src": "/aboutPokemon.js", "dest": "/index.js" },
+      { "src": "/helpPokemon.js", "dest": "/index.js" },
+      { "src": "/infoPokemon.js", "dest": "/index.js" },
+      { "src": "/(.*)", "dest": "/index.js" }
     ],
     "env": {
       "SUPABASE_URL": "https://bikicgbweumnlghjjkbg.supabase.co",
