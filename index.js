@@ -13,7 +13,7 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Serve specific HTML files
+// Serve each HTML file
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'homePokemon.html'));
 });
@@ -26,7 +26,11 @@ app.get('/help', (req, res) => {
     res.sendFile(path.join(__dirname, 'helpPokemon.html'));
 });
 
-// Serve specific CSS files
+app.get('/info', (req, res) => {
+    res.sendFile(path.join(__dirname, 'infoPokemon.html'));
+});
+
+// Serve each CSS file
 app.get('/homePokemon.css', (req, res) => {
     res.sendFile(path.join(__dirname, 'homePokemon.css'));
 });
@@ -39,7 +43,11 @@ app.get('/helpPokemon.css', (req, res) => {
     res.sendFile(path.join(__dirname, 'helpPokemon.css'));
 });
 
-// Serve specific JS files
+app.get('/infoPokemon.css', (req, res) => {
+    res.sendFile(path.join(__dirname, 'infoPokemon.css'));
+});
+
+// Serve each JavaScript file
 app.get('/homePokemon.js', (req, res) => {
     res.sendFile(path.join(__dirname, 'homePokemon.js'));
 });
@@ -50,6 +58,10 @@ app.get('/aboutPokemon.js', (req, res) => {
 
 app.get('/helpPokemon.js', (req, res) => {
     res.sendFile(path.join(__dirname, 'helpPokemon.js'));
+});
+
+app.get('/infoPokemon.js', (req, res) => {
+    res.sendFile(path.join(__dirname, 'infoPokemon.js'));
 });
 
 // Endpoint to register a new account
