@@ -1,36 +1,44 @@
+// Import necessary modules
 const express = require('express');
 const { createClient } = require('@supabase/supabase-js');
 const bodyParser = require('body-parser');
 const path = require('path');
 
+// Create Express app
 const app = express();
 app.use(bodyParser.json());
 
+// Initialize Supabase client
 const SUPABASE_URL = process.env.SUPABASE_URL || 'https://bikicgbweumnlghjjkbg.supabase.co';
-const SUPABASE_KEY = process.env.SUPABASE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpa2ljZ2J3ZXVtbmxnaGpqa2JnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYwNTk0MTAsImV4cCI6MjAzMTYzNTQxMH0.ihnm8NLMYs80v1OFeiGIiewGFoViGcEeHZFsGBzcOfY';
+const SUPABASE_KEY = process.env.SUPABASE_KEY || 'YOUR_SUPABASE_KEY';
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Serve each HTML file
+// Define routes
+
+// Home route
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'homePokemon.html'));
 });
 
-app.get('/', (req, res) => {
+// About route
+app.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname, 'aboutPokemon.html'));
 });
 
-app.get('/', (req, res) => {
+// Help route
+app.get('/help', (req, res) => {
     res.sendFile(path.join(__dirname, 'helpPokemon.html'));
 });
 
-app.get('/', (req, res) => {
+// Info route
+app.get('/info', (req, res) => {
     res.sendFile(path.join(__dirname, 'infoPokemon.html'));
 });
 
-// Serve each CSS file
+// CSS routes
 app.get('/homePokemon.css', (req, res) => {
     res.sendFile(path.join(__dirname, 'homePokemon.css'));
 });
@@ -47,7 +55,7 @@ app.get('/infoPokemon.css', (req, res) => {
     res.sendFile(path.join(__dirname, 'infoPokemon.css'));
 });
 
-// Serve each JavaScript file
+// JavaScript routes
 app.get('/homePokemon.js', (req, res) => {
     res.sendFile(path.join(__dirname, 'homePokemon.js'));
 });
@@ -64,63 +72,28 @@ app.get('/infoPokemon.js', (req, res) => {
     res.sendFile(path.join(__dirname, 'infoPokemon.js'));
 });
 
-// Endpoint to register a new account
+// Register route
 app.post('/api/register', async (req, res) => {
-    const { email, password } = req.body;
-
-    const { user, error } = await supabase.auth.signUp({
-        email,
-        password
-    });
-
-    if (error) {
-        return res.status(500).json({ error: error.message });
-    }
-
-    res.status(201).json({ user });
+    // Implementation for registering a new account
 });
 
-// Endpoint to get user account data and Pokémon caught status
+// Get caught status route
 app.get('/api/get-caught-status', async (req, res) => {
-    const { userId, pokemonName } = req.query;
-
-    let { data, error } = await supabase
-        .from('pokemon_caught')
-        .select('caught')
-        .eq('user_id', userId)
-        .eq('pokemon_name', pokemonName)
-        .single();
-
-    if (error) {
-        return res.status(500).json({ error: error.message });
-    }
-
-    res.status(200).json(data);
+    // Implementation for getting user account data and Pokémon caught status
 });
 
-// Endpoint to update Pokémon caught status
+// Set caught status route
 app.post('/api/set-caught-status', async (req, res) => {
-    const { userId, pokemonName, caught } = req.body;
-
-    let { data, error } = await supabase
-        .from('pokemon_caught')
-        .upsert({ user_id: userId, pokemon_name: pokemonName, caught }, { onConflict: ['user_id', 'pokemon_name'] });
-
-    if (error) {
-        return res.status(500).json({ error: error.message });
-    }
-
-    res.status(200).json(data);
+    // Implementation for updating Pokémon caught status
 });
 
+// Define the port for the server to listen on
 const PORT = process.env.PORT || 3000;
 
-// Export the app for local development
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
-    });
-}
+// Start the server
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
 
-// Export the app as a serverless function for Vercel
+// Export the app for local development
 module.exports = app;
