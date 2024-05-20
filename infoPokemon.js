@@ -25,7 +25,7 @@ async function createPokemon() {
         .then(response => response.json())
         .then(data => {
             const pokemonImage = data.sprites.front_default
-            
+
             const Id = data.id;
             const abilities = [];
             const types = [];
@@ -36,7 +36,7 @@ async function createPokemon() {
             data.types.forEach(item => {
                 types.push(item.type.name.replace(/-/g, ' ')); 
             });
-
+            
             document.getElementById("pokemonImage").innerHTML = `<img src="${pokemonImage}" alt="${pokemonName.replace(/-/g, ' ')}">`;
             pokemonID.textContent = `ID: ${Id}`;
             pokemonAbilities.textContent = `Abilities: ${abilities.join(', ')}`;
@@ -191,3 +191,4 @@ function checkAuthState() {
         // User is not logged in
     }
 }
+

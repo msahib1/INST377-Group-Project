@@ -53,7 +53,7 @@ async function getGen() {
         data: {
             labels: labels,
             datasets: [{
-                label: "Number of Pokémon per Generation",
+                label: "Number of New Pokémon per Generation",
                 data: genList,
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 borderColor: 'rgba(54, 162, 235, 1)',
