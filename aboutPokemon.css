@@ -27,7 +27,7 @@ li a {
 }
 
 .box {
-    position: fixed;
+    position: relative;
     left: 25%;
     top: auto;
     background-color: lightskyblue;
@@ -50,9 +50,11 @@ li a {
 #pics {
     position: fixed;
     left: 40%;
-    top: 27%;
+    top: 7%;
     width: 400px;
     height: 400px;
+    padding: 10px;
+    border: 1px solid black;
   }
 
 #pics img {
@@ -60,3 +62,8 @@ li a {
     height: 400px;
     width: 400px;
   }
+
+#genChart{
+    padding: 40px;
+    margin: 10px;
+}

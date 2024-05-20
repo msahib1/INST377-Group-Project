@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let caughtPokemon = new Set(JSON.parse(localStorage.getItem('caughtPokemon')) || []);
 
     const generations = [...Array(9).keys()].map(i => `Generation ${i + 1}`);
-    generations.forEach(gen => {
+    generations.forEach((gen, i) => {
         const option = document.createElement('option');
         option.value = gen.toLowerCase().replace(' ', '-');
         option.textContent = gen;
@@ -27,13 +27,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchPokemonData() {
         try {
-            const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151'); 
+            const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=200'); 
             const data = await response.json();
             const fetches = data.results.map(result => fetch(result.url).then(res => res.json()));
             pokemonList = await Promise.all(fetches);
+            await fetchGenerationData(pokemonList);
             displayPokemon(pokemonList);
         } catch (error) {
             console.error('Error fetching Pokémon data:', error);
+        }
+    }
+
+    async function fetchGenerationData(pokemonArray) {
+        const generationMapping = {
+            'generation i': 'generation-1',
+            'generation ii': 'generation-2',
+            'generation iii': 'generation-3',
+            'generation iv': 'generation-4',
+            'generation v': 'generation-5',
+            'generation vi': 'generation-6',
+            'generation vii': 'generation-7',
+            'generation viii': 'generation-8',
+            'generation ix': 'generation-9',
+        };
+
+        for (const pokemon of pokemonArray) {
+            try {
+                const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemon.name}`);
+                const data = await response.json();
+                const gen = data.generation.name.replace(/-/g, ' '); 
+                pokemon.generation = generationMapping[gen];
+            } catch (error) {
+                console.error(`Error fetching generation data for ${pokemon.name}:`, error);
+            }
         }
     }
 
@@ -48,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function createPokemonCard(pokemon) {
         const card = document.createElement('div');
         card.className = 'pokemon-card';
+        card.setAttribute('data-generation', pokemon.generation);
 
         const image = document.createElement('img');
         image.src = pokemon.sprites.front_default;
@@ -55,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const name = document.createElement('a');
         name.textContent = pokemon.name;
-        name.href = `infoPokemon.html?pokemon=${pokemon.name}`
+        name.href = `infoPokemon.html?pokemon=${pokemon.name}`;
 
         const button = document.createElement('button');
         button.textContent = 'Catch';
@@ -102,8 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (selectedGeneration !== 'all') {
-            const generationNumber = parseInt(selectedGeneration.split('-')[1]);
-            filteredPokemon = filteredPokemon.filter(pokemon => pokemon.id <= generationNumber * 151);
+            filteredPokemon = filteredPokemon.filter(pokemon => pokemon.generation === selectedGeneration);
         }
 
         if (selectedType !== 'all') {
