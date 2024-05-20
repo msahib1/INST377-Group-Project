@@ -18,15 +18,15 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'homePokemon.html'));
 });
 
-app.get('/about', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'aboutPokemon.html'));
 });
 
-app.get('/help', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'helpPokemon.html'));
 });
 
-app.get('/info', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'infoPokemon.html'));
 });
 
