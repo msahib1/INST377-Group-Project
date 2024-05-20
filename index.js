@@ -14,19 +14,19 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve each HTML file
-app.get('/', (req, res) => {
+app.get('/homePokemon.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'homePokemon.html'));
 });
 
-app.get('/about', (req, res) => { // Update route to '/about'
+app.get('/aboutPokemon.html', (req, res) => { // Update route to '/about'
     res.sendFile(path.join(__dirname, 'aboutPokemon.html'));
 });
 
-app.get('/help', (req, res) => { // Update route to '/help'
+app.get('/helpPokemon.html', (req, res) => { // Update route to '/help'
     res.sendFile(path.join(__dirname, 'helpPokemon.html'));
 });
 
-app.get('/info', (req, res) => { // Update route to '/info'
+app.get('/infoPokemon.html', (req, res) => { // Update route to '/info'
     res.sendFile(path.join(__dirname, 'infoPokemon.html'));
 });
 
