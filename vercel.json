@@ -4,18 +4,18 @@
       { "src": "index.js", "use": "@vercel/node" }
     ],
     "routes": [
-      { "src": "/api/register", "dest": "/index.js" },
-      { "src": "/api/get-caught-status", "dest": "/index.js" },
-      { "src": "/api/set-caught-status", "dest": "/index.js" },
-      { "src": "/homePokemon.css", "dest": "/index.js" },
-      { "src": "/aboutPokemon.css", "dest": "/index.js" },
-      { "src": "/helpPokemon.css", "dest": "/index.js" },
-      { "src": "/infoPokemon.css", "dest": "/index.js" },
-      { "src": "/homePokemon.js", "dest": "/index.js" },
-      { "src": "/aboutPokemon.js", "dest": "/index.js" },
-      { "src": "/helpPokemon.js", "dest": "/index.js" },
-      { "src": "/infoPokemon.js", "dest": "/index.js" },
-      { "src": "/(.*)", "dest": "/index.js" }
+      { "src": "/api/register", "dest": "index.js" },
+      { "src": "/api/get-caught-status", "dest": "index.js" },
+      { "src": "/api/set-caught-status", "dest": "index.js" },
+      { "src": "/homePokemon.html", "dest": "/public/homePokemon.html" },
+      { "src": "/aboutPokemon.html", "dest": "/public/aboutPokemon.html" },
+      { "src": "/helpPokemon.html", "dest": "/public/helpPokemon.html" },
+      { "src": "/homePokemon.css", "dest": "/public/homePokemon.css" },
+      { "src": "/aboutPokemon.css", "dest": "/public/aboutPokemon.css" },
+      { "src": "/helpPokemon.css", "dest": "/public/helpPokemon.css" },
+      { "src": "/homePokemon.js", "dest": "/public/homePokemon.js" },
+      { "src": "/aboutPokemon.js", "dest": "/public/aboutPokemon.js" },
+      { "src": "/helpPokemon.js", "dest": "/public/helpPokemon.js" }
     ],
     "env": {
       "SUPABASE_URL": "https://bikicgbweumnlghjjkbg.supabase.co",
