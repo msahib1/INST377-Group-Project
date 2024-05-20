@@ -18,15 +18,15 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'homePokemon.html'));
 });
 
-app.get('/about', (req, res) => {
+app.get('/about', (req, res) => { // Update route to '/about'
     res.sendFile(path.join(__dirname, 'aboutPokemon.html'));
 });
 
-app.get('/help', (req, res) => {
+app.get('/help', (req, res) => { // Update route to '/help'
     res.sendFile(path.join(__dirname, 'helpPokemon.html'));
 });
 
-app.get('/info', (req, res) => {
+app.get('/info', (req, res) => { // Update route to '/info'
     res.sendFile(path.join(__dirname, 'infoPokemon.html'));
 });
 
@@ -35,15 +35,15 @@ app.get('/homePokemon.css', (req, res) => {
     res.sendFile(path.join(__dirname, 'homePokemon.css'));
 });
 
-app.get('/aboutPokemon.css', (req, res) => {
+app.get('/aboutPokemon.css', (req, res) => { // Update route to '/aboutPokemon.css'
     res.sendFile(path.join(__dirname, 'aboutPokemon.css'));
 });
 
-app.get('/helpPokemon.css', (req, res) => {
+app.get('/helpPokemon.css', (req, res) => { // Update route to '/helpPokemon.css'
     res.sendFile(path.join(__dirname, 'helpPokemon.css'));
 });
 
-app.get('/infoPokemon.css', (req, res) => {
+app.get('/infoPokemon.css', (req, res) => { // Update route to '/infoPokemon.css'
     res.sendFile(path.join(__dirname, 'infoPokemon.css'));
 });
 
@@ -52,15 +52,15 @@ app.get('/homePokemon.js', (req, res) => {
     res.sendFile(path.join(__dirname, 'homePokemon.js'));
 });
 
-app.get('/aboutPokemon.js', (req, res) => {
+app.get('/aboutPokemon.js', (req, res) => { // Update route to '/aboutPokemon.js'
     res.sendFile(path.join(__dirname, 'aboutPokemon.js'));
 });
 
-app.get('/helpPokemon.js', (req, res) => {
+app.get('/helpPokemon.js', (req, res) => { // Update route to '/helpPokemon.js'
     res.sendFile(path.join(__dirname, 'helpPokemon.js'));
 });
 
-app.get('/infoPokemon.js', (req, res) => {
+app.get('/infoPokemon.js', (req, res) => { // Update route to '/infoPokemon.js'
     res.sendFile(path.join(__dirname, 'infoPokemon.js'));
 });
 
